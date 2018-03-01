@@ -19,7 +19,7 @@ V8 version: 5.0.71.57
 
 ## Bonus
 
--   Use an ES6 Template Literal and its string interpolation feature
--   Use a single call to `console.log`
--   Use ES6 Destructuring Assignment to extract the two variables from the
+- [x] Use an ES6 Template Literal and its string interpolation feature
+- [x] Use a single call to `console.log`
+- [x] Use ES6 Destructuring Assignment to extract the two variables from the
     `versions` object
