@@ -17,7 +17,7 @@ Node.js version: v6.3.1
 V8 version: 5.0.71.57
 ```
 
-## Bonus
+### Bonus
 
 - [x] Use an ES6 Template Literal and its string interpolation feature
 - [x] Use a single call to `console.log`
