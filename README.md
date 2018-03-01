@@ -25,14 +25,14 @@ $ ./args.js .1 .2
 
 ### Bonus
 
--   Return 0 if no arguments are passed to the program
--   Use [Array.prototype.map][map] to change each argument into
+- [x] Return 0 if no arguments are passed to the program
+- [x] Use [Array.prototype.map][map] to change each argument into
     a proper `Number` primitive
--   Use [Array.prototype.filter][filter] to limit the arguments
+- [x] Use [Array.prototype.filter][filter] to limit the arguments
     array to only the parts needed
--   Use [Array.prototype.reduce][reduce] to apply a summation
+- [x] Use [Array.prototype.reduce][reduce] to apply a summation
     function to each number
--   As an alternative to `.filter`, use
+- [x] As an alternative to `.filter`, use
     [ES6 Array Destructuring][array_dest] to access only the
     values needed from the arguments array
 ---
