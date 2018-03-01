@@ -1,0 +1,28 @@
+{
+  "name": "NSS-Node-Foundations-Global-Object",
+  "version": "1.0.0",
+  "description": "Solo practice in NodeJS done while attending the [Nashville Software School](http://nashvillesoftwareschool.com/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimAConner/NSS-Node-Foundations-Global-Object.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "read-file": "node global.js"
+  },
+  "bin": {
+    "global.js": "global.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimAConner/NSS-Node-Foundations-Global-Object/issues"
+  },
+  "homepage": "https://github.com/TimAConner/NSS-Node-Foundations-Global-Object#readme"
+}
+
