@@ -1,8 +1,9 @@
-# NSS-Node-Foundations-Global-Object
+# NSS-Node-Foundations
 ## Motivation
 Solo practice in NodeJS done while attending the [Nashville Software School](http://nashvillesoftwareschool.com/).
 
-## Requirements
+## Global Objects Exercise
+### Requirements
 
 Create a JavaScript file to act as a Node.js program named `global.js`. The file
 should contain JavaScript code to output detailed `version` information of Node.js
@@ -17,7 +18,7 @@ Node.js version: v6.3.1
 V8 version: 5.0.71.57
 ```
 
-### Bonus
+#### Bonus
 
 - [x] Use an ES6 Template Literal and its string interpolation feature
 - [x] Use a single call to `console.log`
