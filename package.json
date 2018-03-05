@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/TimAConner/NSS-Node-Foundations-Global-Object#readme",
   "dependencies": {
-    "chalk": "^2.3.1"
+    "chalk": "^2.3.1",
+    "sqlite3": "^3.1.13"
   }
 }
