@@ -3,3 +3,6 @@
 
 --1. Query all of the entries in the `Genre` table
 select * from Genre;
+--1. Using the `INSERT` statement, add one of your favorite artists to the `Artist` table.
+INSERT INTO Artist ("ArtistName", "YearEstablished")
+VALUES ("Gorillaz", "1998");
