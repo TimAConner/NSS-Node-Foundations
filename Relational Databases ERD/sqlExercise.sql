@@ -21,3 +21,19 @@ FROM Song AS s
 LEFT JOIN Album AS a ON s.albumId = a.albumId 
 LEFT JOIN Artist as b ON s.artistId = b.artistId
 WHERE s.AlbumId = (SELECT AlbumId FROM Album WHERE title = "Demon Days");
+--    > **Reminder:** Direction of join matters. Try the following statements and see the difference in results.
+--
+--    ```
+--    SELECT a.Title, s.Title FROM Album a LEFT JOIN Song s ON s.AlbumId = a.AlbumId;
+--    SELECT a.Title, s.Title FROM Song s LEFT JOIN Album a ON s.AlbumId = a.AlbumId;
+--    ```
+--1. Write a `SELECT` statement to display how many songs exist for each album. You'll need to use the `COUNT()` function and the `GROUP BY` keyword sequence.
+SELECT COUNT(s.albumId), a.title
+FROM Song AS s 
+LEFT JOIN Album AS a ON s.albumId = a.albumId
+GROUP BY s.albumId;
+--1. Write a `SELECT` statement to display how many songs exist for each artist. You'll need to use the `COUNT()` function and the `GROUP BY` keyword sequence.
+--1. Write a `SELECT` statement to display how many songs exist for each genre. You'll need to use the `COUNT()` function and the `GROUP BY` keyword sequence.
+--1. Using `MAX()` function, write a select statement to find the album with the longest duration. The result should display the album title and the duration.
+--1. Using `MAX()` function, write a select statement to find the song with the longest duration. The result should display the song title and the duration.
+--1. Modify the previous query to also display the title of the album.
