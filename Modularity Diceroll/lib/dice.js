@@ -1,5 +1,6 @@
 const { randomInt } = require('./math');
-const DICE_REGEX = /([0-9]*)d([0-9]*)/;
+// Regex to match against [diceCount]D[diceSides] (2d6).  Two, six sided dice.
+const DICE_REGEX = /([0-9]*)d([0-9]*)/; 
 
 const roll = diceString => {
     const sides = DICE_REGEX.exec(diceString)[2];
