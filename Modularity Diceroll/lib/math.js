@@ -1,6 +1,6 @@
 module.exports.randomInt = (lowerBound = 1, upperBound = 6) => {
-    const inclusiveUpperBound = upperBound + 1,
-    inclusiveLowerBound = lowerBound;
+    const inclusiveUpperBound = +upperBound + 1,
+    inclusiveLowerBound = +lowerBound;
 
-    return Math.random(inclusiveLowerBound, inclusiveUpperBound);
+    return Math.floor(Math.random() * inclusiveUpperBound) + inclusiveLowerBound;
 };
