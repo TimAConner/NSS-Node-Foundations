@@ -3,8 +3,7 @@ const { randomInt } = require('./math');
 const DICE_REGEX = /([0-9]*)d([0-9]*)/; 
 
 const roll = diceString => {
-    const sides = DICE_REGEX.exec(diceString)[2];
-    const count = DICE_REGEX.exec(diceString)[1];
+    const [, count, sides] = DICE_REGEX.exec(diceString);
 
     let rollArray = [];
     for(let i = 0; i < count; i++){
