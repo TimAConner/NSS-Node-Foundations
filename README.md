@@ -2,6 +2,52 @@
 ## Motivation
 Solo practice in NodeJS done while attending the [Nashville Software School](http://nashvillesoftwareschool.com/).
 ---
+## Modularity Diceroll Exercise
+### Requirements
+
+Create a program that performs a dice roll. You will need a folder `dice-roll` with at
+least 5 files to accomplish this task. See the 01 templates folder in this
+milestone for starter code and structure:
+
+```
+01/
+    bin/
+        diceroll
+    lib/
+        cli.js
+        dice.js
+        math.js
+        parse-args.js
+README.md
+package.json
+```
+
+This library should be globally installed or linked such that you can execute it
+anywhere on your system.
+
+The file without an extension should be the only file that has permissions to
+execute. It should also include only single line of code that requires the
+`cli.js` lib file and a shebang.
+
+The math file should export an `Object` with a method called `randomInt` that
+accepts two arguments, a lower bound and an upper bound. This function
+should return a random integer inclusive of the lower bound and the upper bound.
+
+This parse-args file should export a single function to parse your command line
+arguments. The function should accept an array containing the arguments passed
+on the command line. Convert these arguments to an object with a count and sides
+property.
+
+The dice file should export an object with at least two methods called
+`roll` and `toDiceNotation`. The `toDiceNotation` method should accept
+an object with a sides and count property and convert it to a `String`
+with the dice notation i.e. "1d6" or "2d40". The `roll` method should
+accept a dice notation `String` and produce a random `Number` which is
+the result of the dice roll.
+
+The `cli.js` file should work like a controller. It should have no logic
+on its own. Use the sample code from [this file](https://github.com/nashville-software-school/node-milestones/blob/master/01-foundations/templates/01/lib/cli.js) as-is.
+---
 ## SQLite Create DB Exercise
 ### Instructions
 
