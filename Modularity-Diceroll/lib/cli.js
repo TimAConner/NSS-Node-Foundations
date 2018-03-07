@@ -2,12 +2,12 @@
 
 process.title = 'Dice Roll'
 
-const { argv: [,, ...args] } = process;
-const { count, sides } = require('./parse-args')(args);
-const { roll, toDiceNotation } = require('./dice');
+const { argv: [,, ...args] } = process,
+      { count, sides } = require('./parse-args')(args),
+      { roll, toDiceNotation } = require('./dice');
 
-const dice = toDiceNotation({count, sides});
-const totalRolls = roll(dice);
+const dice = toDiceNotation({count, sides}),
+      totalRolls = roll(dice);
 
 console.log(`Rolled: ${dice}`);
 for(let roll of totalRolls){
