@@ -18,7 +18,7 @@ const createToysTable = () => {
     return new Promise((resolve, reject) => {
         db.run('DROP TABLE IF EXISTS toys')
         .run(`CREATE TABLE IF NOT EXISTS toys (toy_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT, child_id TEXT)`, 
+            name TEXT, child_id TEXT, is_delivered TEXT)`, 
             err => {
                 if (err) return reject(err);
                  resolve(insertToyRows());
@@ -27,9 +27,9 @@ const createToysTable = () => {
 };
 
 const insertToyRows = () => {
-    return Promise.all(toys.map(({name, child_id}) => {
+    return Promise.all(toys.map(({name, child_id, is_delivered}) => {
         return new Promise((resolve, reject) => {
-            db.run(`INSERT INTO toys VALUES (null, "${name}", "${child_id}")`, function(err){
+            db.run(`INSERT INTO toys VALUES (null, "${name}", "${child_id}", '${is_delivered}')`, function(err){
                 if (err) return reject(err);
                 resolve(this.lastID);
             });
