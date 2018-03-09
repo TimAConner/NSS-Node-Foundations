@@ -7,9 +7,10 @@ const { toys } = require('../data/toys');
 
 module.exports.createTables = () => {
     return new Promise((resolve, reject) => {
-        Promise.all([createToysTable(), createChildrenTable()]).then(values => {
-            resolve(values);
-        });
+        createToysTable()
+        .then(() => createChildrenTable())
+        .then(data => resolve(data))
+        .catch(err => console.log(err));
     });
 };
 

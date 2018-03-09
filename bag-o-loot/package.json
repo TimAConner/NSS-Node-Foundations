@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive list -R --watch"
+    "test": "mocha -R spec --colors"
   },
   "keywords": [],
   "author": "",
