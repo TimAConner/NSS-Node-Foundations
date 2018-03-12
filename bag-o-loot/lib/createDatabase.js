@@ -5,6 +5,8 @@ const db = new sqlite3.Database('bagoloot.sqlite');
 const { children } = require('../data/children');
 const { toys } = require('../data/toys');
 
+// You can chain run statments
+
 module.exports.createTables = () => {
     return new Promise((resolve, reject) => {
         createToysTable()

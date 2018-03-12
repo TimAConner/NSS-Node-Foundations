@@ -2,7 +2,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('bagoloot.sqlite');
 
-module.exports.deliverToys = ({name: childName}) => new Promise((resolve, reject) => {
+module.exports.deliverToys = ({childName}) => new Promise((resolve, reject) => {
     db.run(`
     UPDATE toys
     SET is_delivered = 'true'
