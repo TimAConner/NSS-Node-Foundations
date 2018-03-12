@@ -7,7 +7,7 @@ module.exports.listToys = () => new Promise((resolve, reject) => {
     SELECT DISTINCT c.name FROM toys t 
     LEFT JOIN children c
     ON t.child_id = c.child_id
-    WHERE c.name not null;;
+    WHERE c.name not null;
     `, (err, data) => {
         if(err) reject(err);
         else resolve(data);

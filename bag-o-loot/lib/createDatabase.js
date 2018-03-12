@@ -29,7 +29,7 @@ const createToysTable = () => {
 const insertToyRows = () => {
     return Promise.all(toys.map(({name, child_id, is_delivered}) => {
         return new Promise((resolve, reject) => {
-            db.run(`INSERT INTO toys VALUES (null, "${name}", "${child_id}", '${is_delivered}')`, function(err){
+            db.run(`INSERT INTO toys VALUES (null, "${name}", "${child_id}", 'false')`, function(err){
                 if (err) return reject(err);
                 resolve(this.lastID);
             });
