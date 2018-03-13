@@ -1,6 +1,15 @@
 # NSS-Node-Foundations
 ## Motivation
 Solo practice in NodeJS done while attending the [Nashville Software School](http://nashvillesoftwareschool.com/).
+---
+## Relational Database ERD
+### Requirements
+1. Create an ERD for the Music History databse
+  * Open in your Database Browser
+  * Use one of the tools listed above to create an ERD
+
+  [ERD Photo](./Relational-Database-ERD/movie-history-erd.jpg)
+
 ## Bag-o-Loot
 ---
 ## Requirements
