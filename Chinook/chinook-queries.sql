@@ -11,9 +11,11 @@ SELECT (C.FirstName || " " || C.LastName) as "Full Name", I.InvoiceId,  I.Invoic
 From Customer as C 
 JOIN Invoice as I
 ON C.CustomerId = I.CustomerId
-WHERE C.Country = "Brazil"
+WHERE C.Country = "Brazil";
 
 -- Provide a query showing only the Employees who are Sales Agents.
+SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.EmployeeId
+
 -- Provide a query showing a unique list of billing countries from the Invoice table.
 -- Provide a query that shows the invoices associated with each sales agenThe resultant table should include the Sales Agent's full name.
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
