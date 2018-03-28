@@ -9,7 +9,7 @@ SELECT * FROM Customer WHERE Country = "Brazil";
 SELECT (C.FirstName || " " || C.LastName) as "Full Name", I.InvoiceId,  I.InvoiceDate, I.BillingCountry 
 From Customer as C 
 JOIN Invoice as I
-ON C.CustomerId = I.CustomerId
+    ON C.CustomerId = I.CustomerId
 WHERE C.Country = "Brazil";
 
 -- Provide a query showing only the Employees who are Sales Agents.
@@ -23,14 +23,25 @@ SELECT Distinct(BillingCountry) FROM Invoice;
 SELECT Distinct((E.FirstName || " " || E.LastName)) AS FullName, GROUP_CONCAT(I.InvoiceId, ", ") AS Invoices
 FROM Employee AS E 
 LEFT JOIN Customer AS C
-ON E.EmployeeId = C.SupportRepId
+    ON E.EmployeeId = C.SupportRepId
 LEFT JOIN Invoice AS I
-ON I.CustomerId = C.CustomerId
+    ON I.CustomerId = C.CustomerId
 WHERE I.InvoiceId IS NOT NULL
 GROUP BY FullName;
 
-
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
+-- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
+SELECT 
+    (C.FirstName || " " || C.LastName) AS CustomerName, 
+    (E.FirstName || " " || E.LastName) AS SaleAgentt,
+    I.BillingCountry AS Country,
+    I.Total AS InvoiceTotal
+FROM Customer AS C
+LEFT JOIN Employee AS E
+    ON E.EmployeeId = C.SupportRepId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each InvoicHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
