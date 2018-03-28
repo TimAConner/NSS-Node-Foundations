@@ -6,7 +6,6 @@ SELECT (FirstName || " " || LastName) as "Full Name", CustomerId, Country From C
 SELECT * FROM Customer WHERE Country = "Brazil";
 
 -- Provide a query showing the Invoices of customers who are from Brazil  The resultant table should show the customer's full name, Invoice ID, Date of the invoice and billing country.
-
 SELECT (C.FirstName || " " || C.LastName) as "Full Name", I.InvoiceId,  I.InvoiceDate, I.BillingCountry 
 From Customer as C 
 JOIN Invoice as I
@@ -19,7 +18,18 @@ SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.Employ
 -- Provide a query showing a unique list of billing countries from the Invoice table.
 SELECT Distinct(BillingCountry) FROM Invoice;
 
--- Provide a query that shows the invoices associated with each sales agenThe resultant table should include the Sales Agent's full name.
+-- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
+-- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
+SELECT Distinct((E.FirstName || " " || E.LastName)) AS FullName, GROUP_CONCAT(I.InvoiceId, ", ") AS Invoices
+FROM Employee AS E 
+LEFT JOIN Customer AS C
+ON E.EmployeeId = C.SupportRepId
+LEFT JOIN Invoice AS I
+ON I.CustomerId = C.CustomerId
+WHERE I.InvoiceId IS NOT NULL
+GROUP BY FullName;
+
+
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
