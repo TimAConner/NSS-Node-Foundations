@@ -43,10 +43,11 @@ LEFT JOIN Invoice AS I
     ON I.CustomerId = C.CustomerId
 
 -- How many Invoices were there in 2009 and 2011? What are   the respective total sales for each of those years?
-SELECT SUBSTR(InvoiceDate, 1, 4), Count(InvoiceDate), SUM(Total)
+SELECT strftime('%Y',InvoiceDate) AS Year, Count(InvoiceDate) AS Count, SUM(Total) AS Sum
 FROM Invoice
-WHERE InvoiceDate LIKE "%2009%" OR InvoiceDate LIKE "%2011%"
-GROUP BY (SUBSTR(InvoiceDate, 1, 4))
+WHERE InvoiceDate LIKE "%2009%" 
+    OR InvoiceDate LIKE "%2011%"
+GROUP BY (strftime('%Y',InvoiceDate))
 
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each InvoicHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
