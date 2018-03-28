@@ -56,9 +56,16 @@ FROM InvoiceLine
 WHERE InvoiceId = 37;
 
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice HINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
-SELECT InvoiceId AS Id,  COUNT(*) AS Count FROM InvoiceLine GROUP BY InvoiceId
+SELECT InvoiceId AS Id,  COUNT(*) AS Count 
+FROM InvoiceLine 
+GROUP BY InvoiceId;
 
 -- Provide a query that includes the track name with each invoice line item.
+SELECT I.*, T.Name AS TrackId
+FROM Track AS T
+LEFT JOIN InvoiceLine AS I
+    ON I.TrackId = T.TrackId;
+
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
 -- Provide a query that shows the # of invoices per countrHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
 -- Provide a query that shows the total number of tracks in each playlisThe Playlist name should be included on the resultant table.
