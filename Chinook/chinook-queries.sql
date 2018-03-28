@@ -17,6 +17,8 @@ WHERE C.Country = "Brazil";
 SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.EmployeeId
 
 -- Provide a query showing a unique list of billing countries from the Invoice table.
+SELECT Distinct(BillingCountry) FROM Invoice;
+
 -- Provide a query that shows the invoices associated with each sales agenThe resultant table should include the Sales Agent's full name.
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
