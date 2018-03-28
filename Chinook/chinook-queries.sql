@@ -1,6 +1,6 @@
 
 -- Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
-SELECT (FirstName || " " || LastName) as "Full Name", CustomerId, Country From Customer WHERE Country <> "USA"
+SELECT (FirstName || " " || LastName) as "Full Name", CustomerId, Country From Customer WHERE Country <> "USA";
 
 -- Provide a query only showing the Customers from Brazil.
 SELECT * FROM Customer WHERE Country = "Brazil";
@@ -13,7 +13,7 @@ JOIN Invoice as I
 WHERE C.Country = "Brazil";
 
 -- Provide a query showing only the Employees who are Sales Agents.
-SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.EmployeeId
+SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.EmployeeId;
 
 -- Provide a query showing a unique list of billing countries from the Invoice table.
 SELECT Distinct(BillingCountry) FROM Invoice;
@@ -40,16 +40,23 @@ FROM Customer AS C
 LEFT JOIN Employee AS E
     ON E.EmployeeId = C.SupportRepId
 LEFT JOIN Invoice AS I
-    ON I.CustomerId = C.CustomerId
+    ON I.CustomerId = C.CustomerId;
 
 -- How many Invoices were there in 2009 and 2011? What are   the respective total sales for each of those years?
-SELECT strftime('%Y',InvoiceDate) AS Year, Count(InvoiceDate) AS Count, SUM(Total) AS Sum
+SELECT strftime('%Y',InvoiceDate) AS Year, 
+    Count(InvoiceDate) AS Count, 
+    SUM(Total) AS Sum
 FROM Invoice
 WHERE InvoiceDate LIKE "%2009%" 
     OR InvoiceDate LIKE "%2011%"
-GROUP BY (strftime('%Y',InvoiceDate))
+GROUP BY (strftime('%Y',InvoiceDate));
+
 
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
+SELECT COUNT(*)
+FROM InvoiceLine
+WHERE InvoiceId = 37;
+
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each InvoicHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
 -- Provide a query that includes the track name with each invoice line item.
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
