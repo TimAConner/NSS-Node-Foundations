@@ -19,7 +19,6 @@ SELECT * FROM Employee AS E LEFT JOIN Customer AS C ON C.SupportRepId = E.Employ
 SELECT Distinct(BillingCountry) FROM Invoice;
 
 -- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
--- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
 SELECT Distinct((E.FirstName || " " || E.LastName)) AS FullName, GROUP_CONCAT(I.InvoiceId, ", ") AS Invoices
 FROM Employee AS E 
 LEFT JOIN Customer AS C
@@ -29,7 +28,6 @@ LEFT JOIN Invoice AS I
 WHERE I.InvoiceId IS NOT NULL
 GROUP BY FullName;
 
--- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 SELECT 
     (C.FirstName || " " || C.LastName) AS CustomerName, 
@@ -57,7 +55,9 @@ SELECT COUNT(*)
 FROM InvoiceLine
 WHERE InvoiceId = 37;
 
--- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each InvoicHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
+-- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice HINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
+
+
 -- Provide a query that includes the track name with each invoice line item.
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
 -- Provide a query that shows the # of invoices per countrHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
@@ -71,6 +71,14 @@ WHERE InvoiceId = 37;
 -- Provide a query that shows the # of customers assigned to each sales agent.
 -- Provide a query that shows the total sales per countrWhich country's customers spent the most?
 -- Provide a query that shows the most purchased track of 2013.
+SELECT TrackName, MAX(Quantity)
+FROM 
+    (SELECT Track.Name AS TrackName,
+    SUM(InvoiceLine.UnitPrice * InvoiceLine.Quantity) AS Quantity
+    FROM Track
+    JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+    GROUP BY TrackName)
+    
 -- Provide a query that shows the top 5 most purchased tracks over all.
 -- Provide a query that shows the top 3 best selling artists.
 -- Provide a query that shows the most purchased Media Type.
