@@ -1,4 +1,3 @@
-
 -- Provide a query showing Customers (just their full names, customer ID and country) who are not in the US.
 SELECT (FirstName || " " || LastName) as "Full Name", CustomerId, Country From Customer WHERE Country <> "USA";
 
@@ -49,7 +48,6 @@ WHERE InvoiceDate LIKE "%2009%"
     OR InvoiceDate LIKE "%2011%"
 GROUP BY (strftime('%Y',InvoiceDate));
 
-
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 SELECT COUNT(*)
 FROM InvoiceLine
@@ -67,6 +65,9 @@ LEFT JOIN InvoiceLine AS I
     ON I.TrackId = T.TrackId;
 
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
+
+
+
 -- Provide a query that shows the # of invoices per countrHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
 -- Provide a query that shows the total number of tracks in each playlisThe Playlist name should be included on the resultant table.
 -- Provide a query that shows all the Tracks, but displays no IDThe resultant table should include the Album name, Media type and Genre.
@@ -83,7 +84,8 @@ FROM
     (SELECT Track.Name AS TrackName,
     SUM(InvoiceLine.UnitPrice * InvoiceLine.Quantity) AS Quantity
     FROM Track
-    JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+    JOIN InvoiceLine 
+        ON InvoiceLine.TrackId = Track.TrackId
     GROUP BY TrackName)
 
 -- Provide a query that shows the top 5 most purchased tracks over all.
