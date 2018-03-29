@@ -137,7 +137,19 @@ LIMIT 1;
 
 
 -- Which sales agent made the most in sales in 2010?
-
+SELECT (E.FirstName || " " || E.LastName) AS SalesAgent,
+    ("$" || SUM(IL.UnitPrice * IL.Quantity)) AS InvoiceLineCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+LEFT JOIN InvoiceLine AS IL
+    ON IL.InvoiceId = I.InvoiceId
+WHERE strftime('%Y', I.InvoiceDate) = "2010"
+GROUP BY SalesAgent
+ORDER BY InvoiceLineCount DESC
+LIMIT 1;
 
 
 -- Which sales agent made the most in sales over all?
