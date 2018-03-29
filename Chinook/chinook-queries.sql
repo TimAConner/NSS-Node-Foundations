@@ -107,9 +107,19 @@ LEFT JOIN (
     ) IL
     ON I.InvoiceId = IL.InvoiceId
 GROUP BY I.InvoiceId;
-    
 
 -- Provide a query that shows total sales made by each sales agent.
+SELECT (E.FirstName || " " || E.LastName) AS SalesAgent,
+    COUNT(IL.InvoicelineId) AS InvoiceLineCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+LEFT JOIN InvoiceLine AS IL
+    ON IL.InvoiceId = I.InvoiceId
+GROUP BY SalesAgent;
+
 -- Which sales agent made the most in sales in 2009?
 -- Which sales agent made the most in sales in 2010?
 -- Which sales agent made the most in sales over all?
