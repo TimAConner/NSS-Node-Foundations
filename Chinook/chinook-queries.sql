@@ -98,6 +98,17 @@ LEFT JOIN Genre G
     ON G.GenreId = T.GenreId;
 
 -- Provide a query that shows all Invoices but includes the # of invoice line items.
+SELECT IL.InvoiceLineCount, I.*
+FROM Invoice I
+LEFT JOIN (
+    SELECT IL.InvoiceId AS InvoiceId, COUNT(IL.InvoiceId) AS InvoiceLineCount
+    FROM InvoiceLine IL
+    GROUP BY IL.InvoiceId
+    ) IL
+    ON I.InvoiceId = IL.InvoiceId
+GROUP BY I.InvoiceId;
+    
+
 -- Provide a query that shows total sales made by each sales agent.
 -- Which sales agent made the most in sales in 2009?
 -- Which sales agent made the most in sales in 2010?
