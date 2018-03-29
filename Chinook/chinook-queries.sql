@@ -199,8 +199,36 @@ FROM
     GROUP BY TrackName)
 
 -- Provide a query that shows the top 5 most purchased tracks over all.
-
+SELECT
+    T.Name,
+    SUM(IL.Quantity * IL.UnitPrice) AS InvoiceLineCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+LEFT JOIN InvoiceLine AS IL
+    ON IL.InvoiceId = I.InvoiceId
+LEFT JOIN Track AS T
+    ON IL.TrackId = T.TrackId
+GROUP BY T.Name
+ORDER BY InvoiceLineCount DESC
+LIMIT 5;
 
 -- Provide a query that shows the top 3 best selling artists.
+SELECT
+    AR.Name,
+    SUM(IL.Quantity * IL.UnitPrice) AS InvoiceLineCount
+FROM InvoiceLine AS IL
+LEFT JOIN Track AS T
+    ON IL.TrackId = T.TrackId
+LEFT JOIN Album AS A
+    ON A.AlbumId = T.AlbumId
+LEFT JOIN Artist AS AR
+    ON AR.ArtistId = A.ArtistId
+GROUP BY AR.Name
+ORDER BY InvoiceLineCount DESC
+LIMIT 3;
+
 -- Provide a query that shows the most purchased Media Type.
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
