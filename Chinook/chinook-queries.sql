@@ -153,6 +153,20 @@ LIMIT 1;
 
 
 -- Which sales agent made the most in sales over all?
+SELECT (E.FirstName || " " || E.LastName) AS SalesAgent,
+    ("$" || SUM(IL.UnitPrice * IL.Quantity)) AS InvoiceLineCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+LEFT JOIN InvoiceLine AS IL
+    ON IL.InvoiceId = I.InvoiceId
+GROUP BY SalesAgent
+ORDER BY InvoiceLineCount DESC
+LIMIT 1;
+
+
 -- Provide a query that shows the # of customers assigned to each sales agent.
 -- Provide a query that shows the total sales per countrWhich country's customers spent the most?
 -- Provide a query that shows the most purchased track of 2013.
