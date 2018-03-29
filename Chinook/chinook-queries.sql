@@ -220,11 +220,11 @@ SELECT
     AR.Name,
     SUM(IL.Quantity * IL.UnitPrice) AS InvoiceLineCount
 FROM InvoiceLine AS IL
-LEFT JOIN Track AS T
+INNER JOIN Track AS T
     ON IL.TrackId = T.TrackId
-LEFT JOIN Album AS A
+INNER JOIN Album AS A
     ON A.AlbumId = T.AlbumId
-LEFT JOIN Artist AS AR
+INNER JOIN Artist AS AR
     ON AR.ArtistId = A.ArtistId
 GROUP BY AR.Name
 ORDER BY InvoiceLineCount DESC
