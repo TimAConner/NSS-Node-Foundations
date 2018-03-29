@@ -174,7 +174,20 @@ LEFT JOIN Customer AS C
     ON C.SupportRepId = E.EmployeeId
 GROUP BY SalesAgent;
 
--- Provide a query that shows the total sales per countrWhich country's customers spent the most?
+-- Provide a query that shows the total sales per country.  Which country's customers spent the most?
+SELECT
+    I.BillingCountry,
+    SUM(IL.Quantity * IL.UnitPrice) AS InvoiceLineCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+LEFT JOIN Invoice AS I
+    ON I.CustomerId = C.CustomerId
+LEFT JOIN InvoiceLine AS IL
+    ON IL.InvoiceId = I.InvoiceId
+WHERE BillingCountry IS NOT NULL
+GROUP BY I.BillingCountry;
+
 -- Provide a query that shows the most purchased track of 2013.
 SELECT TrackName, MAX(Quantity)
 FROM 
@@ -186,6 +199,8 @@ FROM
     GROUP BY TrackName)
 
 -- Provide a query that shows the top 5 most purchased tracks over all.
+
+
 -- Provide a query that shows the top 3 best selling artists.
 -- Provide a query that shows the most purchased Media Type.
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
