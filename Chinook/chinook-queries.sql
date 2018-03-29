@@ -65,10 +65,21 @@ LEFT JOIN InvoiceLine AS I
     ON I.TrackId = T.TrackId;
 
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
+SELECT I.*, T.Name AS TrackName, AR.Name as ArtistName
+FROM Track AS T
+LEFT JOIN InvoiceLine AS I
+    ON I.TrackId = T.TrackId
+LEFT JOIN Album AS A
+    ON A.AlbumId = T.AlbumId
+LEFT JOIN Artist AS AR
+    ON A.ArtistId = AR.ArtistId;
 
 
+-- Provide a query that shows the # of invoices per country HINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
+SELECT BillingCOuntry, COUNT(*)
+FROM Invoice 
+GROUP BY BillingCountry;
 
--- Provide a query that shows the # of invoices per countrHINT: [GROUP BY](http://www.sqlite.org/lang_select.html#resultset)
 -- Provide a query that shows the total number of tracks in each playlisThe Playlist name should be included on the resultant table.
 -- Provide a query that shows all the Tracks, but displays no IDThe resultant table should include the Album name, Media type and Genre.
 -- Provide a query that shows all Invoices but includes the # of invoice line items.
