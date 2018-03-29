@@ -168,6 +168,12 @@ LIMIT 1;
 
 
 -- Provide a query that shows the # of customers assigned to each sales agent.
+SELECT (E.FirstName || " " || E.LastName) AS SalesAgent, COUNT(C.SupportRepId) AS CustomerCount
+FROM Employee AS E 
+LEFT JOIN Customer AS C 
+    ON C.SupportRepId = E.EmployeeId
+GROUP BY SalesAgent;
+
 -- Provide a query that shows the total sales per countrWhich country's customers spent the most?
 -- Provide a query that shows the most purchased track of 2013.
 SELECT TrackName, MAX(Quantity)
