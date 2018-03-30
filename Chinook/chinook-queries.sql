@@ -154,7 +154,7 @@ LIMIT 1;
 
 -- Which sales agent made the most in sales over all?
 SELECT (E.FirstName || " " || E.LastName) AS SalesAgent,
-    ("$" || SUM(IL.UnitPrice * IL.Quantity)) AS InvoiceLineCount
+    SUM(IL.UnitPrice * IL.Quantity) AS InvoiceLineCount
 FROM Employee AS E 
 LEFT JOIN Customer AS C 
     ON C.SupportRepId = E.EmployeeId
@@ -231,4 +231,23 @@ ORDER BY InvoiceLineCount DESC
 LIMIT 3;
 
 -- Provide a query that shows the most purchased Media Type.
+SELECT MT.Name,
+    SUM(IL.Quantity * IL.UnitPrice) AS InvoiceLineCount
+FROM InvoiceLine AS IL
+INNER JOIN Track AS T
+    ON IL.TrackId = T.TrackId
+INNER JOIN MediaType AS MT
+    ON MT.MediatypeId = T.MediatypeId
+GROUP BY  MT.Name
+ORDER BY InvoiceLineCount DESC
+LIMIT 1;
+
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
+SELECT I.InvoiceId AS InvoiceId, COUNT(T.TrackId) AS TrackCount, COUNT(DISTINCT(T.GenreId)) AS GenreCount
+FROM Invoice I
+INNER JOIN InvoiceLine IL
+    ON I.InvoiceId = IL.InvoiceId
+INNER JOIN Track T
+    ON T.TrackId = IL.TrackId
+GROUP BY IL.InvoiceId
+HAVING GenreCount > 1;
