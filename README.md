@@ -1,6 +1,7 @@
 # NSS-Node-Foundations
 ## Motivation
 Solo practice in NodeJS done while attending the [Nashville Software School](http://nashvillesoftwareschool.com/).
+
 ---
 ## Prompt Training Exercise
 ### Instructions
